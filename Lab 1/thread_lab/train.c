@@ -39,8 +39,8 @@ station_load_train(struct station *station, int count)
 	station->trainSize = count;
 	station->isTrainHere = 1;
 	station->numOfPeopleOriginallyWaiting = station->numOfPeopleWaiting;
-	while ((station->numOfPeopleWaiting > 0 && station->peopleSeated < station->trainSize
-		&& station->isTrainHere == 1) || (station->numOfPeopleWaiting == 0 &&
+	while ((station->numOfPeopleWaiting > 0 && station->peopleSeated < station->trainSize && 
+		station->isTrainHere == 1) || (station->numOfPeopleWaiting == 0 &&
 		station->peopleSeated < station->numOfPeopleOriginallyWaiting)) {
 		cond_broadcast(&station->trainAvaliableCV, &station->theLock);
 		cond_wait(&station->onBoardCV,  &station->theLock);
